@@ -7,13 +7,21 @@ from api.utils import generate_sitemap
 #from models import Person
 
 api = Blueprint('api', __name__)
+import random
 
 
-@api.route('/hello', methods=['POST', 'GET'])
+@api.route('/excuse', methods=['GET'])
 def handle_hello():
+    excuse = 'The dog eat my homework when I finished'
+    who = ['the dog','my granma','his turtle','my bird']
+    what = ['eat','pissed','crushed','broked']
+    when = ['before the class','right in time','when I finished','during my lunch','while I was praying']
+    excuse = who[random.randint(0,len(who)-1)]+" "+what[random.randint(0,len(what)-1)]+" "+when[random.randint(0,len(when)-1)]
+
+
 
     response_body = {
-        "hello": "world"
+        "msg": "world"
     }
 
-    return jsonify(response_body), 200
+    return jsonify(excuse), 200
